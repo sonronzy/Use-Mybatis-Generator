@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sonronzy.mapper.PermutationThreeMainInfoMapper">
+  <resultMap id="BaseResultMap" type="com.sonronzy.entity.PermutationThreeMainInfo">
+    <id column="UID" jdbcType="VARCHAR" property="uid" />
+    <result column="LOTTERY_DATE" jdbcType="VARCHAR" property="lotteryDate" />
+    <result column="LOTTERY_NUMBER" jdbcType="VARCHAR" property="lotteryNumber" />
+    <result column="HUNDREDS_PLACE" jdbcType="VARCHAR" property="hundredsPlace" />
+    <result column="TENS_PLACE" jdbcType="VARCHAR" property="tensPlace" />
+    <result column="ONES_PLACE" jdbcType="VARCHAR" property="onesPlace" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    UID, LOTTERY_DATE, LOTTERY_NUMBER, HUNDREDS_PLACE, TENS_PLACE, ONES_PLACE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_permutation_three_main_info
+    where UID = #{uid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_permutation_three_main_info
+    where UID = #{uid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sonronzy.entity.PermutationThreeMainInfo">
+    insert into t_permutation_three_main_info (UID, LOTTERY_DATE, LOTTERY_NUMBER, 
+      HUNDREDS_PLACE, TENS_PLACE, ONES_PLACE
+      )
+    values (#{uid,jdbcType=VARCHAR}, #{lotteryDate,jdbcType=VARCHAR}, #{lotteryNumber,jdbcType=VARCHAR}, 
+      #{hundredsPlace,jdbcType=VARCHAR}, #{tensPlace,jdbcType=VARCHAR}, #{onesPlace,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sonronzy.entity.PermutationThreeMainInfo">
+    insert into t_permutation_three_main_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        UID,
+      </if>
+      <if test="lotteryDate != null">
+        LOTTERY_DATE,
+      </if>
+      <if test="lotteryNumber != null">
+        LOTTERY_NUMBER,
+      </if>
+      <if test="hundredsPlace != null">
+        HUNDREDS_PLACE,
+      </if>
+      <if test="tensPlace != null">
+        TENS_PLACE,
+      </if>
+      <if test="onesPlace != null">
+        ONES_PLACE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="lotteryDate != null">
+        #{lotteryDate,jdbcType=VARCHAR},
+      </if>
+      <if test="lotteryNumber != null">
+        #{lotteryNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="hundredsPlace != null">
+        #{hundredsPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="tensPlace != null">
+        #{tensPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="onesPlace != null">
+        #{onesPlace,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sonronzy.entity.PermutationThreeMainInfo">
+    update t_permutation_three_main_info
+    <set>
+      <if test="lotteryDate != null">
+        LOTTERY_DATE = #{lotteryDate,jdbcType=VARCHAR},
+      </if>
+      <if test="lotteryNumber != null">
+        LOTTERY_NUMBER = #{lotteryNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="hundredsPlace != null">
+        HUNDREDS_PLACE = #{hundredsPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="tensPlace != null">
+        TENS_PLACE = #{tensPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="onesPlace != null">
+        ONES_PLACE = #{onesPlace,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where UID = #{uid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sonronzy.entity.PermutationThreeMainInfo">
+    update t_permutation_three_main_info
+    set LOTTERY_DATE = #{lotteryDate,jdbcType=VARCHAR},
+      LOTTERY_NUMBER = #{lotteryNumber,jdbcType=VARCHAR},
+      HUNDREDS_PLACE = #{hundredsPlace,jdbcType=VARCHAR},
+      TENS_PLACE = #{tensPlace,jdbcType=VARCHAR},
+      ONES_PLACE = #{onesPlace,jdbcType=VARCHAR}
+    where UID = #{uid,jdbcType=VARCHAR}
+  </update>
+</mapper>
